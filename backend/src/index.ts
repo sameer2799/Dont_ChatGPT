@@ -1,10 +1,16 @@
 import express from 'express';
 
 const app = express();
+app.use(express.json());
 
 const port = 5000;
 
-app.get("/hello", (req, res, next) => {
+app.get("/", (req, res, next) => {
+  return res.send('Hello World');
+});
+
+app.post("/hello", (req, res, next) => {
+  req.body.name ? console.log(req.body.name) : console.log('No body');
   return res.send('Hello World');
 });
 
