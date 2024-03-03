@@ -1,21 +1,15 @@
-import express from 'express';
-
-const app = express();
-app.use(express.json());
-
-const port = 5000;
-
-app.get("/", (req, res, next) => {
-  return res.send('Hello World');
-});
-
-app.post("/hello", (req, res, next) => {
-  req.body.name ? console.log(req.body.name) : console.log('No body');
-  return res.send('Hello World');
-});
+import app from "./app.js";
+import { connectDB } from "./db/connection.js";
 
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
+// connections and listeners
+const port = process.env.PORT || 5000;
+
+connectDB()
+  .then(() => {
+    
+    app.listen(port, () => console.log(`Connected to Database and Server is running at http://localhost:${port} 🚀`));
+  })
+  .catch((error) => console.error(error));
+
 
