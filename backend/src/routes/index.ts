@@ -1,7 +1,11 @@
+import { Router } from 'express';
 import app from '../app.js';
+import userRouter from './user_routes.js';
+import chatRouter from './chat_routes.js';
 
+const appRouter = Router();
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
+appRouter.use("/user", userRouter);
+appRouter.use("/chat", chatRouter);
 
+export default appRouter;

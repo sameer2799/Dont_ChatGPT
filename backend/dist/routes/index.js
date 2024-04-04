@@ -1,5 +1,8 @@
-import app from '../app.js';
-app.get('/', (req, res) => {
-    res.send('Hello World');
-});
+import { Router } from 'express';
+import userRouter from './user_routes.js';
+import chatRouter from './chat_routes.js';
+const appRouter = Router();
+appRouter.use("/user", userRouter);
+appRouter.use("/chat", chatRouter);
+export default appRouter;
 //# sourceMappingURL=index.js.map
