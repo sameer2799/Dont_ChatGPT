@@ -48,7 +48,7 @@ export const userSignup = async (req:Request, res:Response, next:NextFunction) =
         
         })
 
-        return res.status(201).json({message: "User Created", id:user._id.toString() });
+        return res.status(201).json({message: "User Created", name: user.username, email: user.email });
     } catch (error) {
         console.log(error);
         return res.status(500).json({message: "Internal Server Error", cause: error.message });
@@ -89,7 +89,7 @@ export const userLogin = async (req:Request, res:Response, next:NextFunction) =>
         
         })
 
-        return res.status(200).json({message: "User Logged In", id:user._id.toString() });
+        return res.status(200).json({message: "User Logged In", name: user.username, email: user.email});
     } catch (error) {
         console.log(error);
         return res.status(500).json({message: "Internal Server Error", cause: error.message });

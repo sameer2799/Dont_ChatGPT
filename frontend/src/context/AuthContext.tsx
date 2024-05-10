@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { loginUser } from "../helpers/api-communicator";
 
 
 type User = {
@@ -18,14 +19,20 @@ const AuthContext = createContext<UserAuth | null>(null);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [ user, setUser ] = useState<User | null>(null);
-    const [ isLoggedIn, setIsLoggedIn ] = useState<boolean>(true);
+    const [ isLoggedIn, setIsLoggedIn ] = useState<boolean>(false);
 
     useEffect(() => {
         // fetch if user is logged in (in cookies and valid) then skip login
     });
 
     const login = async (email: string, password: string) => {
-        // fetch login api
+        // fetch login using fn loginUser from api-communicator inside helpers
+        const data = await loginUser(email, password);
+        if (data){
+            setUser({ username: data.username, email: data.email });
+            setIsLoggedIn(true);
+        }
+
     };
     const signup = async (email: string, password: string, username: string) => {
         // fetch signup api
