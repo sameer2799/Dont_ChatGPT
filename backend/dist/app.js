@@ -9,7 +9,7 @@ const app = express();
 // remove in production
 app.use(morgan('dev'));
 // middlewares
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: "https://fuzzy-telegram-gwp7jj64j5xhrqq-5173.app.github.dev/", credentials: true }));
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use("/api/v1", appRouter);

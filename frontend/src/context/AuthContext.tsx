@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { loginUser } from "../helpers/api-communicator";
-
+import React from "react";
 
 type User = {
     username: string;
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         // fetch login using fn loginUser from api-communicator inside helpers
         const data = await loginUser(email, password);
         if (data){
-            setUser({ username: data.username, email: data.email });
+            setUser({ username: data.name, email: data.email });
             setIsLoggedIn(true);
         }
 
