@@ -1,4 +1,4 @@
 
-# my_chatgpt_clone
+# Don't ChatGPT
 
-ChatGPT clone with my own flavour.
+ChatGPT with my own flavour.
