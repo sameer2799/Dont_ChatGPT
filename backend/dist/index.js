@@ -1,10 +1,10 @@
-import express from 'express';
-const app = express();
-const port = 5000;
-app.get("/hello", (req, res, next) => {
-    return res.send('Hello World');
-});
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
-});
+import app from "./app.js";
+import { connectDB } from "./db/connection.js";
+// connections and listeners
+const port = process.env.PORT || 5000;
+connectDB()
+    .then(() => {
+    app.listen(port, () => console.log(`Connected to Database and Server is running at http://localhost:${port} 🚀`));
+})
+    .catch((error) => console.error(error));
 //# sourceMappingURL=index.js.map
