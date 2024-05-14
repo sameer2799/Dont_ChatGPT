@@ -95,3 +95,51 @@ export const userLogin = async (req:Request, res:Response, next:NextFunction) =>
         return res.status(500).json({message: "Internal Server Error", cause: error.message });
     }
 };
+
+export const verifyUser = async (req:Request, res:Response, next:NextFunction) => {
+    // user login
+    try {
+        
+        const user = await User.findById(res.locals.jwtData.id);
+        if (!user) {
+            return res.status(404).send("User not registered or token expired");
+        }
+        if(user._id.toString() !== res.locals.jwtData.id){
+            return res.status(403).send("Unauthorized");
+        };
+        
+    
+        return res.status(200).json({message: "User Logged In", name: user.username, email: user.email});
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({message: "Internal Server Error", cause: error.message });
+    }
+};
+
+export const userLogout = async (req:Request, res:Response, next:NextFunction) => {
+    // user logout
+    try {
+        
+        const user = await User.findById(res.locals.jwtData.id);
+        if (!user) {
+            return res.status(404).send("User not registered or token expired");
+        }
+        if(user._id.toString() !== res.locals.jwtData.id){
+            return res.status(403).send("Unauthorized");
+        };
+        // clear existing cookie
+        res.clearCookie(COOKIE_NAME,{
+            path: "/",
+            domain: "localhost",
+            httpOnly: true,
+            signed: true,
+        }
+        );
+        
+    
+        return res.status(200).json({message: "User Logged In", name: user.username, email: user.email});
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({message: "Internal Server Error", cause: error.message });
+    }
+};

@@ -30,3 +30,7 @@ export const signupValidator = [
     body("username").isString().isLength({ min: 3 }).notEmpty().withMessage("Username is required"),
     ...loginValidator,
 ];
+
+export const chatCompletionValidator = [
+    body("message").notEmpty().withMessage("Message is required")    
+];
