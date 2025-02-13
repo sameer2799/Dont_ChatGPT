@@ -14,7 +14,7 @@ const app = express();
 
 
 // middlewares
-app.use(cors({ origin: "https://dont-chat-gpt-pqlv.vercel.app:5173", credentials: true }));
+app.use(cors({ origin: ["https://dont-chat-gpt-pqlv.vercel.app", "https://dont-chat-gpt.vercel.app"],methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'] , credentials: true }));
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
