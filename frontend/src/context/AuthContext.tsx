@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
 
     };
-    const signup = async (email: string, password: string, username: string) => {
+    const signup = async (username: string, email: string, password: string) => {
         // fetch signup api
         const data = await signupUser(username, email, password);
         if (data){

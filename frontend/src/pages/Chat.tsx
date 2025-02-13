@@ -42,7 +42,7 @@ const Chat = () => {
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement|null>(null);
   const auth = useAuth();
-  const [ chatMessages, setChatMessages ] = useState<Message[]>(chatmessages);
+  const [ chatMessages, setChatMessages ] = useState<Message[]>([]); // chatMessages
   const handleSubmit = async () => {
       const content = inputRef.current?.value as string;
       if(inputRef && inputRef.current){
@@ -50,15 +50,16 @@ const Chat = () => {
       }
       const newMessage : Message = { role: "user", content };
       setChatMessages((prev) => [...prev, newMessage]);
-      // const chatData = await sendChatRequest(content);
-      // if(chatData.message == "Internal server error"){toast.error("Sorry, API's are costly :(", { id: "login" });; return;}
-      // setChatMessages([...chatData.chats]);
+      const chatData = await sendChatRequest(content);
+      if(chatData.message == "Internal server error"){toast.error("Sorry, API's are costly :(", { id: "login" });; return;}
+      setChatMessages([...chatData.chats]);
       
   };
   useLayoutEffect(() => {
     if(auth?.isLoggedIn && auth.user){
       toast.loading("Loading Chats...", { id: "loadchats" });
       getUserChats().then((data) => {
+        console.log(data);
       setChatMessages([...data.chats]);
       toast.success("Successfully Loaded Chats", { id: "loadchats" });
     }).catch((error) => {
@@ -97,7 +98,7 @@ const Chat = () => {
         <Box sx={{ display: "flex", width: "100%", height: "60vh", bgcolor: "rgb(17,29,39)", borderRadius: 5, flexDirection: "column", mx: 3 }}>
           <Avatar sx={{ mx: "auto", my: 2, bgcolor: "white", color: "black", fontWeight: 700 }}>
             {auth?.user?.username[0].toUpperCase()}
-            {auth?.user?.username.split(" ")[1][0].toUpperCase()}
+            {/* {auth?.user?.username.split(" ")[1][0].toUpperCase()} */}
           </Avatar>
           <Typography sx={{ mx: "auto", fontFamily: "work sans" }}>
             You are talking to a bot.

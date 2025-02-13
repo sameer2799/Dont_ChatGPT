@@ -46,7 +46,7 @@ const ChatItem = ({content, role} : { content:string, role:"user" | "assistant" 
         <Box sx={{ display:"flex", p:2, bgcolor: "#004d56", my: 1, borderRadius:2, gap:2 }}>
             <Avatar sx={{m1:'0', bgcolor:"black", color:"white"}}>
                 {auth?.user?.username[0].toUpperCase()}
-                {auth?.user?.username.split(" ")[1][0].toUpperCase()}
+                {/* {auth?.user?.username.split(" ")[1][0].toUpperCase()} */}
             </Avatar>
             <Box>
                 {(!messageBlocks) && (

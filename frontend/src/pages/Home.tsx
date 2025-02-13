@@ -13,11 +13,11 @@ const Home = () => {
           <TypeAnim />
         </Box>
         <Box sx={{ width:"100%", display:"flex", flexDirection: { md: "row", xs: "column", sm:"column" }, gap:5, my:10 }}>
-          <img src="vite.svg" alt="vite" style={{ width: "200px", margin:"auto" }}/>
-          <img src="react.svg" alt="react" style={{ width: "200px", margin:"auto" }} className='rotate'/>
+          <img src="robot.png" alt="vite" style={{ width: "200px", margin:"auto" }}/>
+          <img src="openai.png" alt="react" style={{ width: "200px", margin:"auto" }} className='rotate'/>
         </Box>
         <Box sx={{ width:"100%", display:"flex" , mx:"auto" }}>
-          <img src="react.svg" alt="react" style={{ display:"flex", margin:"auto", width: isMobile? "80%" : "60%", borderRadius:20, marginTop:20, marginBottom:20, boxShadow:"-5px -5px 105px #64f3d5" }} />
+          <img src="chat.png" alt="react" style={{ display:"flex", margin:"auto", width: isMobile? "80%" : "60%", borderRadius:20, marginTop:20, marginBottom:20, boxShadow:"-5px -5px 105px #64f3d5" }} />
         </Box>
       </Box>
       <Footer />
