@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useEffect, useRef, useState } from 'react';
 import { Box, Avatar, Typography, Button, IconButton } from '@mui/material';
 import { useAuth } from '../context/AuthContext';
 import { red } from '@mui/material/colors';
@@ -13,28 +13,28 @@ type Message = {
   content:string;
 }
 
-const chatmessages : Message[] = [
-  {
-    role: "assistant",
-    content: "Hello, I am a bot. You can ask me anything you want. I will try to answer your questions. But remember, I am a bot. I am not perfect. Also, do not share your personal information with me."
-  },
-  {
-    role: "user",
-    content: "What is your name?"
-  },
-  {
-    role: "assistant",
-    content: "I am a bot. I do not have a name."
-  },
-  {
-    role: "user",
-    content: "a random code snippet."
-  },
-  {
-    role: "assistant",
-    content: "Sure, here is a code snippet.```javascript\nconst a = 10;\nconst b = 20;\nconst c = a + b;\nconsole.log(c);``` Had fun?"
-  }
-];
+// const chatmessages : Message[] = [
+//   {
+//     role: "assistant",
+//     content: "Hello, I am a bot. You can ask me anything you want. I will try to answer your questions. But remember, I am a bot. I am not perfect. Also, do not share your personal information with me."
+//   },
+//   {
+//     role: "user",
+//     content: "What is your name?"
+//   },
+//   {
+//     role: "assistant",
+//     content: "I am a bot. I do not have a name."
+//   },
+//   {
+//     role: "user",
+//     content: "a random code snippet."
+//   },
+//   {
+//     role: "assistant",
+//     content: "Sure, here is a code snippet.```javascript\nconst a = 10;\nconst b = 20;\nconst c = a + b;\nconsole.log(c);``` Had fun?"
+//   }
+// ];
 
 
 
@@ -135,8 +135,4 @@ const Chat = () => {
   )
 }
 
-export default Chat
-
-function deleteChats() {
-  throw new Error('Function not implemented.');
-}
+export default Chat;

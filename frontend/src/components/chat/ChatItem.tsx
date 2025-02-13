@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Avatar, Typography } from '@mui/material';
 import { useAuth } from '../../context/AuthContext';
 import { Prism as SyntaxHighLighter } from 'react-syntax-highlighter';
@@ -32,7 +31,7 @@ const ChatItem = ({content, role} : { content:string, role:"user" | "assistant" 
                 <Typography fontSize={"20px"}>
                     {content}
                 </Typography>)}
-                {messageBlocks && messageBlocks.length && messageBlocks.map((block, index) => (isCodeBlock(block) ? (
+                {messageBlocks && messageBlocks.length && messageBlocks.map((block, _index) => (isCodeBlock(block) ? (
                     <SyntaxHighLighter style={coldarkDark} language='javascript' >{block}</SyntaxHighLighter>
                 ) : (
                     <Typography fontSize={"20px"}>
@@ -53,7 +52,7 @@ const ChatItem = ({content, role} : { content:string, role:"user" | "assistant" 
                 <Typography fontSize={"20px"}>
                     {content}
                 </Typography>)}
-                {messageBlocks && messageBlocks.length && messageBlocks.map((block, index) => (isCodeBlock(block) ? (
+                {messageBlocks && messageBlocks.length && messageBlocks.map((block, _index) => (isCodeBlock(block) ? (
                     <SyntaxHighLighter style={coldarkDark} language='javascript' >{block}</SyntaxHighLighter>
                 ) : (
                     <Typography fontSize={"20px"}>
